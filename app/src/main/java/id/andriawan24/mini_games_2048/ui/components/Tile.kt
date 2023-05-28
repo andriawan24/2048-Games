@@ -1,10 +1,8 @@
 package id.andriawan24.mini_games_2048.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -21,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import id.andriawan24.mini_games_2048.ui.theme.MiniGames2048Theme
 
 @Composable
-fun CircleNumberTile(
+fun Tile(
     modifier: Modifier = Modifier,
     size: Dp = 48.dp,
     number: Int? = null
@@ -30,13 +28,13 @@ fun CircleNumberTile(
         modifier = modifier
             .width(size)
             .height(size)
-            .clip(CircleShape)
+            .clip(MaterialTheme.shapes.small)
             .background(if (number != null) Color(0xFF02B5FF) else Color.LightGray.copy(alpha = 0.2F)),
         contentAlignment = Alignment.Center
     ) {
         if (number != null) {
             Text(
-                text = "2",
+                text = "$number",
                 color = Color.White,
                 style = MaterialTheme.typography.displaySmall
             )
@@ -46,20 +44,20 @@ fun CircleNumberTile(
 
 @Preview
 @Composable
-fun CircleNumberTileNumberNotNullPreview() {
+fun TileNotNullPreview() {
     MiniGames2048Theme {
         Surface(color = MaterialTheme.colorScheme.background) {
-            CircleNumberTile(number = 2)
+            Tile(number = 2)
         }
     }
 }
 
 @Preview
 @Composable
-fun CircleNumberTileNumberNullPreview() {
+fun TileNullPreview() {
     MiniGames2048Theme {
         Surface(color = MaterialTheme.colorScheme.background) {
-            CircleNumberTile()
+            Tile()
         }
     }
 }
